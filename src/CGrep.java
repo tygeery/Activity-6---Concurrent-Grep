@@ -3,10 +3,6 @@
  */
 public class CGrep {
 
-    /***
-     * contains main method
-     */
-
 
     public static void main(String [ ] args) {
 
