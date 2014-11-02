@@ -1,4 +1,5 @@
-import java.io.File;
+import java.io.*;
+import java.util.Scanner;
 import java.util.concurrent.Callable;
 
 /**
@@ -32,6 +33,27 @@ public class FileGrep<Found> implements Callable<Found> {
          * TODO You can call addFoundLine(String) on an instantiated Found
          * TODO to add each line, then return the fully constructed found object.
          */
+        String line = null;
+        String complete_pattern = "*" + pattern + "*";
+        int line_num = 0;
+        //Found found_lines = new Found(fileToGrep.getName());
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(fileToGrep));
+            while((line = reader.readLine()) != null)
+            {
+                if (line.matches(complete_pattern))
+                {
+                    String result = Integer.toString(line_num) + " " + line;
+                    //found_lines.addFoundLine(line);
+                    line_num++;
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //return found_lines;
         return null;
     }
 }
