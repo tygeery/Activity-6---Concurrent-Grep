@@ -44,7 +44,7 @@ public class Found {
      * if no lines, then nothing is printed.
      */
     public void printFoundLines() {
-        //todo verify implementation
+        System.out.println(fileName);
         for (String line : matchingLines) {
             System.out.println(line);
         }
