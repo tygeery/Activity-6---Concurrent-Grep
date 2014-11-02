@@ -28,9 +28,9 @@ public class CGrep {
         for (int i = 1; i < args.length; i++) {
             File f = new File(args[i]);
             if (f.exists()) {
-                completionService.submit(new FileGrep<Found>(f, pattern));
+                completionService.submit(new FileGrep(f, pattern));
             } else {
-                System.out.println("File " + args[i] + "not found!");
+                System.out.println("File " + args[i] + " not found!");
             }
         }
 

@@ -19,6 +19,10 @@ public class Found {
         this.matchingLines = new ArrayList<String>();
     }
 
+    public static Found getNewFound(String fName) {
+        return new Found(fName);
+    }
+
     /**
      * Get the name of the file
      * @return the file name

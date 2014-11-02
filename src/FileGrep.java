@@ -1,5 +1,4 @@
 import java.io.*;
-import java.util.Scanner;
 import java.util.concurrent.Callable;
 
 /**
@@ -7,13 +6,13 @@ import java.util.concurrent.Callable;
  * Class that implements callable
  * to perform the file searching concurrently
  */
-public class FileGrep<Found> implements Callable<Found> {
+public class FileGrep implements Callable {
 
     private File fileToGrep;
     private String pattern;
 
     /**
-     * COnstructor for FileGrap
+     * Constructor for FileGrap
      * @param fileToGrep file that will be searched
      * @param pattern to search for
      */
@@ -33,10 +32,10 @@ public class FileGrep<Found> implements Callable<Found> {
          * TODO You can call addFoundLine(String) on an instantiated Found
          * TODO to add each line, then return the fully constructed found object.
          */
-        String line = null;
-        String complete_pattern = "*" + pattern + "*";
+        String line = "";
+        String complete_pattern =  pattern ;
         int line_num = 0;
-        //Found found_lines = new Found(fileToGrep.getName());
+        Found found_lines = new Found(fileToGrep.getName());
         try {
             BufferedReader reader = new BufferedReader(new FileReader(fileToGrep));
             while((line = reader.readLine()) != null)
@@ -44,7 +43,7 @@ public class FileGrep<Found> implements Callable<Found> {
                 if (line.matches(complete_pattern))
                 {
                     String result = Integer.toString(line_num) + " " + line;
-                    //found_lines.addFoundLine(line);
+                    found_lines.addFoundLine(result);
                     line_num++;
                 }
             }
@@ -53,7 +52,7 @@ public class FileGrep<Found> implements Callable<Found> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //return found_lines;
-        return null;
+        return found_lines;
+        //return null;
     }
 }
