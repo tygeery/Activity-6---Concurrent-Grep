@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.concurrent.Callable;
+import java.util.regex.Pattern;
 
 /**
  * File created by jcdesimp on 10/31/14.
@@ -33,7 +34,7 @@ public class FileGrep implements Callable {
          * TODO to add each line, then return the fully constructed found object.
          */
         String line = "";
-        String complete_pattern =  pattern ;
+        String complete_pattern = ".*" + pattern + ".*";
         int line_num = 0;
         Found found_lines = new Found(fileToGrep.getName());
         try {
